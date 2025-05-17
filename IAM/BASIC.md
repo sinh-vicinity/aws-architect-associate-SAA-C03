@@ -1,0 +1,50 @@
+# IAM
+- Identity and Access Management
+- Global services
+
+## Root Account
+- Created by default and should not be used/shared + MFA enable
+
+## Users and Groups
+- Can group user to muliple groups 
+- User dont have to belong to a group
+
+## IAM permission
+- Policy = IAM Permissions
+- Consists of:
+    - version: policy language version "2012-10-17"
+    - id: identifier for the policy
+    - Statement: one or more statement
+        - sid: Statement ID
+        - Effect (Allow/Deny)
+        - Principal: account/user/role which this policy applied to
+        - Action
+        - Resource
+        - Condition
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "ec2:Describe*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "elasticloadbalancing:Describe*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:ListMetrics",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:Describe*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
